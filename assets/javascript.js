@@ -39,15 +39,27 @@ function displayGIFs(){
 		method: "GET"
 	}).done(function(response){
 		// for each item in the response array
+		// console.log(response);
 		for (var i = 0; i<response.data.length; i++){
 			// create a div with class of animalGifDiv
 			var gifDiv = $("<div class ='animalGifDiv'>");
 			// create the url for the static gif
 			var staticGifURL = response.data[i].images.fixed_width_still.url;
-			// create an image with the static gif URL
-			var staticGifImage = $("<img>").attr("src", staticGifURL);
+			// create the url for the animated gif
+			var animatedGifURL = response.data[i].images.fixed_width.url;
+
+			// initialGifImage is made with the static URL
+			var gifImage = $("<img>").attr("src", staticGifURL);
+
+
+			// set the attributes of the GIF (animated, static, and current state)
+			gifImage.attr("data-state", "static");
+			gifImage.attr("data-animate", animatedGifURL);
+			gifImage.attr("data-static", staticGifURL);
+			gifImage.attr("class", "gif");
+			
 			// append the image to the individual gif div
-			gifDiv.append(staticGifImage);
+			gifDiv.append(gifImage);
 
 			var gifRating = response.data[i].rating;
 			var displayRating = $("<p>").text("Rating: " + gifRating);
@@ -61,5 +73,17 @@ function displayGIFs(){
 }
 
 $(document).on("click", ".animalType",displayGIFs);
+
+$(".gif").on("click", function(){
+	var currentState = $(this).attr("data-state"); 
+	console.log(currentState);
+	if (currentState === "static") {
+		$(this).attr("src", $(this).attr("data-animate"));
+		$(this).attr("data-state","animated");
+	} else {
+		$(this).attr("src", $(this).attr("data-static"));
+		$(this).attr("data-state", "static");
+	}
+})
 
 
