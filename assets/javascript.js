@@ -38,16 +38,24 @@ function displayGIFs(){
 		url: queryURL,
 		method: "GET"
 	}).done(function(response){
-		console.log("ajax response", response);
-		console.log("response length", response.data.length);
+		// for each item in the response array
 		for (var i = 0; i<response.data.length; i++){
+			// create a div with class of animalGifDiv
 			var gifDiv = $("<div class ='animalGifDiv'>");
+			// create the url for the static gif
 			var staticGifURL = response.data[i].images.fixed_width_still.url;
+			// create an image with the static gif URL
 			var staticGifImage = $("<img>").attr("src", staticGifURL);
+			// append the image to the individual gif div
 			gifDiv.append(staticGifImage);
+
+			var gifRating = response.data[i].rating;
+			var displayRating = $("<p>").text("Rating: " + gifRating);
+			gifDiv.append(displayRating);
+
+
+			// append the individual animal GIF div to the gif container
 			$("#gifContainer").append(gifDiv);
-			// console.log("staticGif", staticGif);
-			// console.log(response.data[i].id);
 		}
 	});
 }
@@ -55,9 +63,3 @@ function displayGIFs(){
 $(document).on("click", ".animalType",displayGIFs);
 
 
-// $.ajax({
-// 	url: queryURL,
-// 	method: "GET",
-// }).done(function(response){
-// 	console.log("response", response);
-// })
