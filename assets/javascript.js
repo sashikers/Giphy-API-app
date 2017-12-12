@@ -28,6 +28,7 @@ var APIKey = "dc6zaTOxFJmzC" // public beta key from https://giphy.api-docs.io/1
 // var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchItem + "&api_key=" + APIKey + "&limit=10";
 
 function displayGIFs(){
+	$("#gifContainer").empty();
 	// grabs the attribute animal-name from the button that is pressed 
 	var animalToSearch = $(this).attr("animal-name");
 	// sets up the queryURL
@@ -38,6 +39,16 @@ function displayGIFs(){
 		method: "GET"
 	}).done(function(response){
 		console.log("ajax response", response);
+		console.log("response length", response.data.length);
+		for (var i = 0; i<response.data.length; i++){
+			var gifDiv = $("<div class ='animalGifDiv'>");
+			var staticGifURL = response.data[i].images.fixed_width_still.url;
+			var staticGifImage = $("<img>").attr("src", staticGifURL);
+			gifDiv.append(staticGifImage);
+			$("#gifContainer").append(gifDiv);
+			// console.log("staticGif", staticGif);
+			// console.log(response.data[i].id);
+		}
 	});
 }
 
