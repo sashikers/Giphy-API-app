@@ -49,14 +49,14 @@ function displayGIFs(){
 			var animatedGifURL = response.data[i].images.fixed_width.url;
 
 			// initialGifImage is made with the static URL
-			var gifImage = $("<img>").attr("src", staticGifURL);
+			var gifImage = $("<img class='gif'>").attr("src", staticGifURL);
 
 
 			// set the attributes of the GIF (animated, static, and current state)
 			gifImage.attr("data-state", "static");
 			gifImage.attr("data-animate", animatedGifURL);
 			gifImage.attr("data-static", staticGifURL);
-			gifImage.attr("class", "gif");
+			// gifImage.attr("class", "gif");
 			
 			// append the image to the individual gif div
 			gifDiv.append(gifImage);
@@ -74,7 +74,9 @@ function displayGIFs(){
 
 $(document).on("click", ".animalType",displayGIFs);
 
-$(".gif").on("click", function(){
+$(document).on("click", ".gif", function(){
+	console.log("wow!");
+	// event.preventDefault();
 	var currentState = $(this).attr("data-state"); 
 	console.log(currentState);
 	if (currentState === "static") {
