@@ -74,11 +74,10 @@ function displayGIFs(){
 
 $(document).on("click", ".animalType",displayGIFs);
 
+// need to add the document listener because no .gifs exist when the page is created
 $(document).on("click", ".gif", function(){
-	console.log("wow!");
 	// event.preventDefault();
 	var currentState = $(this).attr("data-state"); 
-	console.log(currentState);
 	if (currentState === "static") {
 		$(this).attr("src", $(this).attr("data-animate"));
 		$(this).attr("data-state","animated");
