@@ -31,6 +31,7 @@ function displayGIFs(){
 	$("#gifContainer").empty();
 	// grabs the attribute animal-name from the button that is pressed 
 	var animalToSearch = $(this).attr("animal-name");
+	console.log("animalToSearch", animalToSearch); 
 	// sets up the queryURL
 	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animalToSearch + "&api_key=" + APIKey + "&limit=10";
 
@@ -85,6 +86,15 @@ $(document).on("click", ".gif", function(){
 		$(this).attr("src", $(this).attr("data-static"));
 		$(this).attr("data-state", "static");
 	}
-})
+});
+
+$("#add-animal").on("click", function(event) {
+	event.preventDefault();
+	var newAnimal = $("#animal-input").val().trim();
+	animals.push(newAnimal);
+	initializeButtons();
+	displayGIFs();
+});
+
 
 
