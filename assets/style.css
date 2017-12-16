@@ -1,6 +1,12 @@
 .animalType {
-	padding: 5px; 
+	padding: 5px 10px; 
 	margin: 5px;
+	background-color: #4DAA57;
+	color: #B5DDA4;
+	border-style: solid;
+	border-width: 3px; 
+	border-color: #B5DDA4;
+	border-radius: 20px 5px;
 }
 
 #gifContainer {
@@ -11,4 +17,37 @@
 	display: inline-block;
 	margin: 10px;
 	padding: 5px;
+}
+
+.jumbotron {
+	color: #F9ECCC;
+	background-color: #754668;
+	text-shadow: #587D71 2px 2px 2px;
+	border: #587D71 solid 2px;
+}
+
+body {
+	background-color: #F9ECCC;
+}
+
+#animal-input {
+	background-color: #4DAA57;
+	color: #B5DDA4;
+	border-radius: 20px 5px;
+}
+
+#animal-input:focus {
+	border: #B5DDA4 solid 5px;
+	box-shadow: 0px;
+}
+
+#add-animal {
+	background-color: #B5DDA4;
+	color: #4DAA57;	
+	font-weight: bold;
+	border: #4DAA57 solid 5px;
+}
+
+label {
+	color: #754668;
 }
