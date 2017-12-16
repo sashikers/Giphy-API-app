@@ -11,6 +11,8 @@
 
 #gifContainer {
 	width: 800px;
+	color: #754668;
+	font-weight: bold;
 }
 
 .animalGifDiv {
@@ -30,15 +32,22 @@ body {
 	background-color: #F9ECCC;
 }
 
+p {
+	font-weight: bold;
+	color: #754668;
+}
+
 #animal-input {
 	background-color: #4DAA57;
 	color: #B5DDA4;
 	border-radius: 20px 5px;
+	padding: 5px;
+	margin: 5px;
 }
 
 #animal-input:focus {
 	border: #B5DDA4 solid 5px;
-	box-shadow: 0px;
+	box-shadow: inset 0;
 }
 
 #add-animal {
@@ -50,4 +59,15 @@ body {
 
 label {
 	color: #754668;
+}
+
+hr {
+	border-style: dashed;
+	border-width: 1px;
+	border-color: #754668;
+	/*margin-bottom: 0px;*/
+}
+
+.gif {
+	border: solid #4DAA57 5px;
 }

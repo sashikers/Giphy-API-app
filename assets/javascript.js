@@ -93,7 +93,7 @@ $("#add-animal").on("click", function(event) {
 	var newAnimal = $("#animal-input").val().trim();
 	animals.push(newAnimal);
 	initializeButtons();
-	displayGIFs();
+	displayGIFs;
 });
 
 
